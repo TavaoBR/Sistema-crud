@@ -3,12 +3,12 @@
 class Conexao
 {
 
-   function conectar(){
+    function conectar(){
     $db = "mysql";
-    $host = "127.0.0.1";
+    $host = "localhost";
     $user = "James";
     $password = "Guga1234%!";
-    $dbname = "bataman";
+    $dbname = "sistemacrud";
     $port = 3306;
 
        try{
