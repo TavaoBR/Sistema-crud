@@ -1,0 +1,21 @@
+create database sistemacrud;
+use sistemacrud;
+
+create table pessoa(
+id int not null auto_increment, 
+nome varchar(60),
+email varchar(120),
+senha varchar(120),
+perfis int,
+primary key(id)
+);
+
+create table perfil(
+id int not null auto_increment,
+fk_pessoa int,
+nome_perfil varchar(120),
+image varchar(60),
+qrcode text,
+primary key(id),
+foreign key(fk_pessoa) references pessoa(id)
+);
