@@ -27,9 +27,8 @@ class Cadastro extends Conexao
         $conexao = new Conexao;
         $conexao->conectar();
 
+          
         
-
-
 
                 /*$nome = $_POST['nome'];
                 $email = $_POST['email'];
