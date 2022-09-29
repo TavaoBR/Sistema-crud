@@ -1,43 +1,28 @@
 <div class="body-overlay"></div>
          <nav id="sidebar">
               <div class="sidebar-header">
-                <h3><img src="https://devporai.com.br/wp-content/uploads/2021/01/O-que-e-CRUD.jpg" class="img-fluid"><span>Sistema-CRUD</span></h3>
+                <h3><img src="https://www.luiztools.com.br/wp-content/uploads/2017/07/CRUD.png" class="img-fluid"><span>Sistema-CRUD</span></h3>
                </div>
                <ul class="list-unstyled components">
                   <li class="active">
                   <a href="#"><img src="https://i.pinimg.com/originals/98/b2/09/98b2098575be206677508d42f6c5c945.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill">&nbsp;&nbsp;&nbsp;<span>Maluco</span></a>
                   </li>
-
-                  <div class="small-screen navbar-display">
-				
-				<li  class="d-lg-none d-md-block d-xl-none d-sm-block">
-                    <a href="#"><i class="material-icons">apps</i><span>apps</span></a>
-                </li>
-				
-				 <li  class="d-lg-none d-md-block d-xl-none d-sm-block">
-                    <a href="#"><i class="material-icons">person</i><span>user</span></a>
-                </li>
-				
-				<li  class="d-lg-none d-md-block d-xl-none d-sm-block">
-                    <a href="#"><i class="material-icons">settings</i><span>setting</span></a>
-                </li>
-				</div>
                   
                        <li  class="">
-                          <a href="#"><i class="material-icons">send</i><span>Comunicar</span></a>
+                          <a href="#"><i class="material-icons">send</i><span>Algo legal</span></a>
                        </li>
 
                         <li  class="">
-                          <a href="#"><i class="material-icons">forward_to_inbox</i><span>Enviados</span></a>
+                          <a href="#"><i class="material-icons">forward_to_inbox</i><span>Algo legal</span></a>
                         </li>
 
                         <li  class="">
-                          <a href="#"><i class="material-icons">mark_email_unread</i><span>Recebidos</span></a>
+                          <a href="#"><i class="material-icons">mark_email_unread</i><span>Algo legal</span></a>
                         </li>
 
                         
                         <li  class="">
-                          <a href="#"><i class="material-icons">mark_unread_chat_alt</i><span>Respondidos</span></a>
+                          <a href="#"><i class="material-icons">mark_unread_chat_alt</i><span>Algo legal</span></a>
                         </li>
 
                 <li class="">

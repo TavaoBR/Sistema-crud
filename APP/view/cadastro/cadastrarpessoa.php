@@ -29,7 +29,7 @@ session_start();
          <div class="main-content">
              <div class="row">
              <div class="container pt-3 mb-3">
-        <h2 class="">Cadastrar-se</h2>
+        <h2 class="text-center">Cadastrar-se</h2>
               
         <div class="container">
     <div class="contact__wrapper shadow-lg mt-n9">
