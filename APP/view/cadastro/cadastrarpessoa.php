@@ -35,7 +35,12 @@ session_start();
                             <div class="form-group">
                                 <label class="required-field" for="firstName">Nome completo <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="titulo_materia"  value="<?php  
-                                
+                                if(isset($_SESSION['nome']))
+                                {
+                                echo $_SESSION['nome'];
+
+                                unset($_SESSION['nome']);
+                                }
                                 ?>" name="nome" placeholder="">
                             </div>
                         </div>
@@ -44,7 +49,12 @@ session_start();
                             <div class="form-group">
                                 <label class="required-field" for="firstName">E-mail <span class="text-danger">*</span></label>
                                 <input type="email" class="form-control" id="titulo_materia"  value="<?php  
-                                
+                                if(isset($_SESSION['email']))
+                                {
+                                echo $_SESSION['email'];
+
+                                unset($_SESSION['email']);
+                                }
                                 ?>" name="email" placeholder="">
                             </div>
                         </div>
@@ -63,7 +73,14 @@ session_start();
                             <div class="form-group">
                                 <label class="required-field" for="firstName">Senha <span class="text-danger">*</span></label>
                                 <input type="password" class="form-control" id="titulo_materia"  value="<?php  
-                                
+
+                                    if(isset($_SESSION['senha']))
+                                    {
+                                    echo $_SESSION['senha'];
+
+                                    unset($_SESSION['senha']);
+                                    }
+
                                 ?>" name="senha" placeholder="">
                             </div>
                         </div>
@@ -72,7 +89,7 @@ session_start();
                             <div class="form-group">
                                 <label class="required-field" for="firstName">Confirme Senha <span class="text-danger">*</span></label>
                                 <input type="password" class="form-control" id="titulo_materia"  value="<?php  
-                                
+
                                 ?>" name="confirma-senha" placeholder="">
                             </div>
                         </div>

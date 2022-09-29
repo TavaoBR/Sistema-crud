@@ -24,10 +24,10 @@ $conexao->conectar();
       <!-- left column -->
       <div class="col-md-3">
         <div class="text-center">
-          <img src="" id="preview" class="avatar img-circle img-thumbnail">
+          <img src="" id="preview" class="avatar img-circle img-thumbnail rounded-pill">
           <h6>Upload a different photo...</h6>
           
-          <input type="file" id="input-exibe-file" class="form-control">
+          <input type="file" id="input-exibe-file" class="form-control" accept="image/*">
         </div>
       </div>
 
@@ -49,11 +49,6 @@ $conexao->conectar();
       
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
-        <div class="alert alert-info alert-dismissable">
-          <a class="panel-close close" data-dismiss="alert">×</a> 
-          <i class="fa fa-coffee"></i>
-          This is an <strong>.alert</strong>. Use this to show important messages to the user.
-        </div>
         <h3>Personal info</h3>
         
         <form class="form-horizontal" role="form">
