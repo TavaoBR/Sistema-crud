@@ -1,5 +1,5 @@
 <?php 
 
-include_once("APP/controller/routa.php");
+include_once("APP/model/routa.php");
 
 ?>
