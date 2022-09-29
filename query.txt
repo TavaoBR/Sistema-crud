@@ -2,19 +2,25 @@ create database sistemacrud;
 use sistemacrud;
 
 create table pessoa(
-id int not null auto_increment, 
+id int not null auto_increment,
+id_url text, 
 nome varchar(60),
 email varchar(120),
 senha varchar(120),
+status varchar(120),
 perfis int,
 primary key(id)
 );
 
+select * from pessoa;
+
 create table perfil(
 id int not null auto_increment,
 fk_pessoa int,
+id_url text,
 nome_perfil varchar(120),
 image varchar(60),
+pin text,
 qrcode text,
 primary key(id),
 foreign key(fk_pessoa) references pessoa(id)
