@@ -5,17 +5,6 @@ include_once("APP/model/bd.php");
 class Cadastro extends Conexao
 {
 
-    
-
-    public static function cadastroPessoaForm()
-    {
-        include_once("APP/view/cadastro/cadastrarpessoa.php");
-    }
-
-    public static function criarPerfis()
-    {
-        include_once("APP/view/cadastro/criarperfil.php");
-    }
 
 
     static function cadastroPessoa()
