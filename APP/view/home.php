@@ -24,6 +24,7 @@ $fk_id = $select_usuario_url_assoc['id'];
 
 $select_fk_usuario = $conexao->conectar()->prepare("SELECT * FROM perfil WHERE fk_pessoa = :fk_pessoa");
 $select_fk_usuario->bindParam(':fk_pessoa', $fk_id, PDO::PARAM_INT);
+$select_fk_usuario->execute();
 
 
 ?>
