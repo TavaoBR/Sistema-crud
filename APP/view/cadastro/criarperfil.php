@@ -26,14 +26,14 @@ $conexao->conectar();
 </head>
 <body>
 <div class="container bootstrap snippets bootdey">
-    <h1 class="text-primary">Edit Profile</h1>
+    <h1 class="text-primary">Criar Perfil</h1>
       <hr>
 	<div class="row">
       <!-- left column -->
       <div class="col-md-3">
         <div class="text-center">
           <img src="" id="preview" class="avatar img-circle img-thumbnail rounded-pill">
-          <h6>Upload a different photo...</h6>
+          <h6>Escolha uma foto</h6>
           
           <input type="file" id="input-exibe-file" class="form-control" accept="image/*">
         </div>

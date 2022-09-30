@@ -17,11 +17,11 @@ switch ($url) {
 
     case '/cadastro/criar-perfis':
         Routas::criarPerfis();
-     break;   
+    break;   
     
     default:
-        # code...
-        break;
+       
+    break;
 }
 
 

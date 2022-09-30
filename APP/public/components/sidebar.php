@@ -1,3 +1,5 @@
+     <link rel="stylesheet" href="/APP/public/css/menu.css">
+
 <div class="body-overlay"></div>
          <nav id="sidebar">
               <div class="sidebar-header">
