@@ -12,8 +12,6 @@ class Login extends Conexao
         $conexao = new Conexao;
         $conexao->conectar();
         
-        
-
         if(isset($_POST['Logar']))
         {
 
@@ -72,8 +70,12 @@ class Login extends Conexao
 
     function verifica_usuario()
     {
-        
-
+        if(!$_SESSION['usuarioID'] AND !$_SESSION['usuarioEmail'] AND !$_SESSION['usuarioIDUrl'] AND !$_SESSION['usuarioSenha']){
+            $_SESSION['mensagem'] = "<div class='alert alert-danger'> Acesso restrito</div>";
+            header("Location: /login");
+            exit();
+       }
+       
     }
 
 }

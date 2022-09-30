@@ -4,6 +4,8 @@ include_once("APP/model/bd.php");
 $conexao = new Conexao;
 $conexao->conectar();
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
