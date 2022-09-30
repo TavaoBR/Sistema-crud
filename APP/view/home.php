@@ -1,7 +1,4 @@
 <?php 
-
-
-
 session_start();
 require_once("APP/model/bd.php");
 require_once("APP/controller/login.php");
@@ -11,34 +8,32 @@ $verifica = new Login();
 $verifica->verifica_usuario();
 
 $id_pessoa = $_SESSION['usuarioID'];
-
-
 $id_url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
 
+$select_pessoa_logada = $conexao->conectar()->prepare("SELECT * FROM pessoa WHERE id = :id_pessoa");
+$select_pessoa_logada->execute(array(
+    ":id_pessoa" => $id_pessoa
+)); 
 
-$select_usuario_url = $conexao->conectar()->prepare("SELECT * FROM pessoa WHERE id_url = :url");
-$select_usuario_url->execute(array(
-    ":url" => $id_url
-));
-
-$select_usuario_url_assoc = $select_usuario_url->fetch(PDO::FETCH_ASSOC);
-
-$fk_id = $select_usuario_url_assoc['id'];
+$select_pessoa_logada_informacacoes = $select_pessoa_logada->fetch(PDO::FETCH_ASSOC);
 
 $select_fk_usuario = $conexao->conectar()->prepare("SELECT * FROM perfil WHERE fk_pessoa = :fk_pessoa");
 $select_fk_usuario->execute(array(
-    ":fk_pessoa" => $fk_id
+    ":fk_pessoa" => $id_pessoa
 ));
 
 switch(true)
 {
+
+     case ($id_url != $select_pessoa_logada_informacacoes['id_url']):
+        $_SESSION['mensagem'] = "<div class='alert alert-danger'>Você não é esse usuario. Logue com sua conta</div>";
+        header("Location: /login");
+     break;   
+
     case (empty($id_url)):
+        $_SESSION['mensagem'] = "<div class='alert alert-danger'>Por favor logue</div>";
         header("Location: /login");
        break;
-
-   case ($id_url != $select_usuario_url_assoc['id_url']):
-     header("Location: /login");
-   break; 
 
 }
 
