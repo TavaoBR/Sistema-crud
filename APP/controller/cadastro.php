@@ -5,13 +5,9 @@ include_once("APP/model/bd.php");
 class Cadastro extends Conexao
 {
 
-
-
     static function cadastroPessoa()
     {
         session_start();
-
-        
 
         $conexao = new Conexao;
         $conexao->conectar();
@@ -24,6 +20,7 @@ class Cadastro extends Conexao
             $senha = $_POST['senha'];
             $md5 = md5($senha);
             $confirma_senha = $_POST['confirma-senha'];
+            $status = 'Ativado';
 
             $select_cadastro = "SELECT * FROM pessoa";
             $select_cadastro_ = $conexao->conectar()->prepare($select_cadastro);
@@ -38,8 +35,7 @@ class Cadastro extends Conexao
             $_SESSION['senha'] = $senha;
             //FIM
 
-            switch (true) {
-
+                switch (true) {
                     case ($nome == "" && $email == "" && $confirma_email == "" && $senha == "" && $confirma_senha == ""):
                         $_SESSION['mensagem'] = "<div class = 'alert alert-danger' id='tempo'>Preencha todos os dados</div>";
                         header("Location: /cadastro");           
@@ -114,35 +110,34 @@ class Cadastro extends Conexao
                              
                     
                    default:
+                        $insert = "INSERT INTO pessoa(nome, email, senha, status) VALUES (:nome, :email, :senha, :status)";
+                        $insert_query = $conexao->conectar()->prepare($insert);
+                        $insert_query->bindParam(':nome', $nome);
+                        $insert_query->bindParam(':email', $email);
+                        $insert_query->bindParam(':senha', $md5);
+                        $insert_query->bindParam(':status', $status);
+                        $insert_query->execute();
 
-                   $insert = "INSERT INTO pessoa(nome, email, senha) VALUES (:nome, :email, :senha)";
-                   $insert_query = $conexao->conectar()->prepare($insert);
-                   $insert_query->bindParam(':nome', $nome);
-                   $insert_query->bindParam(':email', $email);
-                   $insert_query->bindParam(':senha', $md5);
-                   $insert_query->execute();
+                            $id = $conexao->conectar()->lastInsertId();
+                            $url_id = md5($id);
 
-                   $id = $conexao->conectar()->lastInsertId();
-                     $url_id = md5($id);
+                            $update = "UPDATE pessoa SET id_url = :url_id ";
+                            $update_query = $conexao->conectar()->prepare($update);
+                            $update_query->bindParam(':url_id', $url_id);
+                            $update_query->execute();
 
-                     $update = "UPDATE pessoa SET id_url = :url_id ";
-                     $update_query = $conexao->conectar()->prepare($update);
-                     $update_query->bindParam(':url_id', $url_id);
-                     $update_query->execute();
+                        if($insert_query->rowCount())
+                        {
+                            $_SESSION['mensagem'] = "<div class = 'alert alert-success' id='tempo'>Cadastro realizado com sucesso. Logue e crie até 5 perfis</div>";
+                            header("Location: /cadastro");
 
-                   if($insert_query->rowCount())
-                   {
-                    $_SESSION['mensagem'] = "<div class = 'alert alert-success' id='tempo'>Cadastro realizado com sucesso. Logue e crie até 5 perfis</div>";
-                    header("Location: /cadastro");
-
-                   }else{
-                    $_SESSION['mensagem'] = "<div class = 'alert alert-danger' id='tempo'>Error. Entre em contato com o desenvolvedor jamesgustavo133@gmail.com</div>";
-                    $_SESSION['nome'] = $nome;
-                    $_SESSION['email'] = $email;
-                    $_SESSION['senha'] = $senha;
-                    header("Location: /cadastro");
-                   }
-         
+                        }else{
+                            $_SESSION['mensagem'] = "<div class = 'alert alert-danger' id='tempo'>Error. Entre em contato com o desenvolvedor jamesgustavo133@gmail.com</div>";
+                            $_SESSION['nome'] = $nome;
+                            $_SESSION['email'] = $email;
+                            $_SESSION['senha'] = $senha;
+                            header("Location: /cadastro");
+                        }
                     break;
             }
 
@@ -151,6 +146,21 @@ class Cadastro extends Conexao
             header("Location: /cadastro");
         }
           
+        
+    }
+
+
+    static function criarPerfil()
+    {
+        session_start();
+              
+        if(isset($_POST['Cadastrar']))
+        {
+          
+            
+        }else{
+            
+        }
         
     }
 

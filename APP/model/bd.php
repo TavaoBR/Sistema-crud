@@ -18,6 +18,6 @@ class Conexao
        }catch (Exception $ex){
          echo $ex;
   }
-   }  
+}  
     
 }
