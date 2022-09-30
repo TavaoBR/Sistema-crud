@@ -101,7 +101,7 @@ class Cadastro extends Conexao
                              break;
                              
                              
-                             case (isset($select_cadastro_assoc['email']) == $email):
+                             case ($select_cadastro_assoc['email'] == $email):
                                 $_SESSION['mensagem'] = "<div class = 'alert alert-danger' id='tempo'>E-mail sendo utilizado</div>";
                                 $_SESSION['nome'] = $nome;
                                 $_SESSION['senha'] = $senha;
@@ -112,24 +112,18 @@ class Cadastro extends Conexao
                    default:
                         $insert = "INSERT INTO pessoa(nome, email, senha, status) VALUES (:nome, :email, :senha, :status)";
                         $insert_query = $conexao->conectar()->prepare($insert);
-                        $insert_query->bindParam(':nome', $nome);
-                        $insert_query->bindParam(':email', $email);
-                        $insert_query->bindParam(':senha', $md5);
-                        $insert_query->bindParam(':status', $status);
-                        $insert_query->execute();
-
-                            $id = $conexao->conectar()->lastInsertId();
-                            $url_id = md5($id);
-
-                            $update = "UPDATE pessoa SET id_url = :url_id ";
-                            $update_query = $conexao->conectar()->prepare($update);
-                            $update_query->bindParam(':url_id', $url_id);
-                            $update_query->execute();
+                        $insert_query->execute(array(
+                            ":nome" => $nome,
+                            ":email" => $email,
+                            ":senha" => $md5,
+                            ":status" => $status
+                        ));        
 
                         if($insert_query->rowCount())
                         {
+                            
                             $_SESSION['mensagem'] = "<div class = 'alert alert-success' id='tempo'>Cadastro realizado com sucesso. Logue e crie até 5 perfis</div>";
-                            header("Location: /cadastro");
+                            header("Location: /login");
 
                         }else{
                             $_SESSION['mensagem'] = "<div class = 'alert alert-danger' id='tempo'>Error. Entre em contato com o desenvolvedor jamesgustavo133@gmail.com</div>";

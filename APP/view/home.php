@@ -15,16 +15,18 @@ $verifica->verifica_usuario();
 
 $id_url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
 $select_usuario_url = $conexao->conectar()->prepare("SELECT * FROM pessoa WHERE id_url = :url");
-$select_usuario_url->bindParam(':url', $id_url, PDO::PARAM_STR);
-$select_usuario_url->execute();
+$select_usuario_url->execute(array(
+    ":url" => $id_url
+));
 
 $select_usuario_url_assoc = $select_usuario_url->fetch(PDO::FETCH_ASSOC);
 
 $fk_id = $select_usuario_url_assoc['id'];
 
 $select_fk_usuario = $conexao->conectar()->prepare("SELECT * FROM perfil WHERE fk_pessoa = :fk_pessoa");
-$select_fk_usuario->bindParam(':fk_pessoa', $fk_id, PDO::PARAM_INT);
-$select_fk_usuario->execute();
+$select_fk_usuario->execute(array(
+    ":fk_pessoa" => $fk_id
+));
 
 
 ?>

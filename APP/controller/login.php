@@ -49,9 +49,24 @@ class Login extends Conexao
                     $_SESSION['usuarioIDUrl'] = $assoc_user['id_url'];
                     $_SESSION['usuarioEmail'] = $assoc_user['email'];
                     $_SESSION['usuarioSenha'] = $assoc_user['senha_usuario'];
-                    $id_url = $_SESSION['usuarioIDUrl'];
 
-                    header("Location: /perfis?url=$id_url");
+
+                        $cocatenando_nome_email_id = md5($assoc_user['nome'].$assoc_user['email'].$assoc_user['id'].$assoc_user['id_url']);
+                        $update = "UPDATE pessoa SET id_url = :id_url WHERE id = :id_pessoa";
+                        $update_query = $conexao->conectar()->prepare($update);
+                        $update_query->execute(array(
+                            ":id_url" => $cocatenando_nome_email_id,
+                            ":id_pessoa" => $assoc_user['id']
+                        ));
+
+                        if($update_query->rowCount())
+                        {
+                            header("Location: /perfis?url=$cocatenando_nome_email_id");
+                        }else{
+                            $_SESSION['mensagem'] = "<div class = 'alert alert-danger'>Erro. Tente novamente mais tarde</div>";
+                            header("Location: /login");
+                        }
+                    
 
                 }else{
                     $_SESSION['mensagem'] = "<div class = 'alert alert-danger'>Dados invalidos</div>";
