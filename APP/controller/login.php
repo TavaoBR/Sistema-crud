@@ -46,11 +46,18 @@ class Login extends Conexao
                 
                 $assoc_user = $query->fetch(PDO::FETCH_ASSOC); 
 
-                if(isset($assoc_user))
-                {
+                if(isset($assoc_user)){
+                    $_SESSION['usuarioID'] = $assoc_user['id']; 
+                    $_SESSION['usuarioIDUrl'] = $assoc_user['id_url'];
+                    $_SESSION['usuarioEmail'] = $assoc_user['email'];
+                    $_SESSION['usuarioSenha'] = $assoc_user['senha_usuario'];
+                    $id_url = $_SESSION['usuarioIDUrl'];
+
+                    header("Location: /perfis?url=$id_url");
 
                 }else{
-                    
+                    $_SESSION['mensagem'] = "<div class = 'alert alert-danger'>Dados invalidos</div>";
+                    header("Location: /login");
                 }
 
                 break;
