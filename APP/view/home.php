@@ -3,17 +3,19 @@
 
 
 session_start();
-include_once("APP/model/bd.php");
-include_once("APP/controller/login.php");
+require_once("APP/model/bd.php");
+require_once("APP/controller/login.php");
 $conexao = new Conexao;
 $conexao->conectar();
 $verifica = new Login();
 $verifica->verifica_usuario();
 
-
+$id_pessoa = $_SESSION['usuarioID'];
 
 
 $id_url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
+
+
 $select_usuario_url = $conexao->conectar()->prepare("SELECT * FROM pessoa WHERE id_url = :url");
 $select_usuario_url->execute(array(
     ":url" => $id_url
@@ -27,6 +29,19 @@ $select_fk_usuario = $conexao->conectar()->prepare("SELECT * FROM perfil WHERE f
 $select_fk_usuario->execute(array(
     ":fk_pessoa" => $fk_id
 ));
+
+switch(true)
+{
+    case (empty($id_url)):
+        header("Location: /login");
+       break;
+
+   case ($id_url != $select_usuario_url_assoc['id_url']):
+     header("Location: /login");
+   break; 
+
+}
+
 
 
 ?>
@@ -51,7 +66,120 @@ $select_fk_usuario->execute(array(
 </head>
 <body>
 
-   
+<div class="container bootstrap snippets bootdey">
+    <h4 class="h-title">
+        New team members        
+    </h4>
+    <div class="row">
+      <div class="col-md-4 col-sm-6">
+        <div class="block">
+          <div class="thumbnail">
+            <a href="#" class="thumb-zoom" title="Eugene A. Kopyov">
+              <img src="https://via.placeholder.com/300x300/48D1CC/000000" alt="">
+            </a>
+              <div class="caption text-center">
+                <h6>Eugene A. Kopyov <small>UX designer</small></h6>
+                <div class="icons-group">
+                          <a href="#"><i class="fa fa-google-plus"></i></a>
+                          <a href="#" ><i class="fa fa-twitter"></i></a>
+                          <a href="#"><i class="fa fa-github"></i></a>
+                      </div>
+              </div>
+            </div>
+        </div>
+      </div>
     
+      <div class="col-md-4 col-sm-6">
+        <div class="block">
+            <div class="thumbnail">
+            <a href="#g" class="thumb-zoom" title="Sophia R. McJamer">
+                <img src="https://via.placeholder.com/300x300/B0C4DE/000000" alt="">
+              </a>
+              <div class="caption text-center">
+                <h6>Sophia R. McJamer <small>Media designer</small></h6>
+                <div class="icons-group">
+                          <a href="#"><i class="fa fa-google-plus"></i></a>
+                          <a href="#" ><i class="fa fa-twitter"></i></a>
+                          <a href="#"><i class="fa fa-github"></i></a>
+                      </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    
+      <div class="col-md-4 col-sm-6">
+        <div class="block">
+            <div class="thumbnail">
+            <a href="#" class="thumb-zoom" title="Noah Kennedy">
+                <img src="https://via.placeholder.com/300x300/FF7F50/000000" alt="">
+              </a>
+              <div class="caption text-center">
+                <h6>Noah Kennedy <small>CEO &amp; founder</small></h6>
+                <div class="icons-group">
+                          <a href="#"><i class="fa fa-google-plus"></i></a>
+                          <a href="#" ><i class="fa fa-twitter"></i></a>
+                          <a href="#"><i class="fa fa-github"></i></a>
+                      </div>
+              </div>
+            </div>
+        </div>
+      </div>
+        
+      <div class="col-md-4 col-sm-6">
+        <div class="block">
+            <div class="thumbnail">
+            <a href="#" class="thumb-zoom" title="Noah Kennedy">
+                <img src="https://via.placeholder.com/300x300/00BFFF/000000" alt="">
+              </a>
+              <div class="caption text-center">
+                <h6>Noah Kennedy <small>CEO &amp; founder</small></h6>
+                <div class="icons-group">
+                          <a href="#"><i class="fa fa-google-plus"></i></a>
+                          <a href="#" ><i class="fa fa-twitter"></i></a>
+                          <a href="#"><i class="fa fa-github"></i></a>
+                      </div>
+              </div>
+            </div>
+        </div>
+      </div>
+        
+      <div class="col-md-4 col-sm-6">
+        <div class="block">
+            <div class="thumbnail">
+            <a href="#" class="thumb-zoom" title="Noah Kennedy">
+                <img src="https://via.placeholder.com/300x300/008B8B/000000" alt="">
+              </a>
+              <div class="caption text-center">
+                <h6>Noah Kennedy <small>CEO &amp; founder</small></h6>
+                <div class="icons-group">
+                          <a href="#"><i class="fa fa-google-plus"></i></a>
+                          <a href="#" ><i class="fa fa-twitter"></i></a>
+                          <a href="#"><i class="fa fa-github"></i></a>
+                      </div>
+              </div>
+            </div>
+        </div>
+      </div> 
+        
+      <div class="col-md-4 col-sm-6">
+        <div class="block">
+            <div class="thumbnail">
+            <a href="#" class="thumb-zoom" title="Noah Kennedy">
+                <img src="https://via.placeholder.com/300x300/5F9EA0/000000" alt="">
+              </a>
+              <div class="caption text-center">
+                <h6>Noah Kennedy <small>CEO &amp; founder</small></h6>
+                <div class="icons-group">
+                          <a href="#"><i class="fa fa-google-plus"></i></a>
+                          <a href="#" ><i class="fa fa-twitter"></i></a>
+                          <a href="#"><i class="fa fa-github"></i></a>
+                      </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>    
+</div>
+
 </body>
 </html>
