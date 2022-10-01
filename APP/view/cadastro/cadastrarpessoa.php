@@ -15,19 +15,10 @@ session_start();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-     <link rel="stylesheet" href="/APP/public/css/menu.css">
     <title>Cadastrar</title>
 </head>
 <body>
 
-
-
-<div class="wrapper">
- <?php include_once("APP/public/components/sidebar.php");?>
-    <div id="content">
-        <?php include_once("APP/public/components/navbar.php");?>
-         <div class="main-content">
-             <div class="row">
              <div class="container pt-3 mb-3">
         <h2 class="text-center">Cadastrar-se</h2>
               

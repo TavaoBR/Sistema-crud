@@ -9,7 +9,7 @@ class Routas
 
     public static function criarPerfis()
     {
-        include_once("APP/public/components/render.php");
+        include_once("APP/public/components_extras/render.php");
     }
 
     public static function login()
@@ -19,6 +19,6 @@ class Routas
 
     public static function perfis()
     {
-        include_once("APP/view/home.php");
+        include_once("APP/public/components_extras/render.php");
     }
 }

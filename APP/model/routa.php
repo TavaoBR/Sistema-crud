@@ -34,7 +34,7 @@ switch ($url){
     break;
     
     default:
-       
+       echo "404";
     break;
 }
 

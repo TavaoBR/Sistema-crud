@@ -1,3 +1,5 @@
+<title>Criar Perfil</title>
+
 <div class="container bootstrap snippets bootdey">
     <h1 class="text-primary">Criar Perfil</h1>
       <hr>
@@ -7,7 +9,6 @@
         <div class="text-center">
           <img src="" id="preview" class="avatar img-circle img-thumbnail rounded-pill">
           <h6>Escolha uma foto</h6>
-          
           <input type="file" id="input-exibe-file" class="form-control" accept="image/*">
         </div>
       </div>
@@ -36,15 +37,16 @@
           <div class="form-group">
             <label class="col-lg-3 control-label">Nome de usuario:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="dey-dey">
+              <input class="form-control" type="text" value="" name="nome">
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-lg-3 control-label">Deseja colocar pin de segurança?</label>
+            <label class="col-lg-3 control-label">Deseja ter PIN?</label>
             <div class="col-lg-8">
                 <select name="" id="">
-                         
+                    <option value="">Selecione uma opção</option>
+                    <option value=""></option>
                 </select>
             </div>
           </div>

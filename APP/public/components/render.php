@@ -18,21 +18,6 @@ $select_pessoa_logada->execute(array(
 
 $select_pessoa_logada_informacacoes = $select_pessoa_logada->fetch(PDO::FETCH_ASSOC);
 
-switch(true)
-{
-
-     case ( $fk_usuario != $id_pessoa):
-        $_SESSION['mensagem'] = "<div class='alert alert-danger'>Você não é esse usuario. Logue com sua conta</div>";
-        header("Location: /login");
-     break;   
-
-    case ($fk_usuario == ""):
-        $_SESSION['mensagem'] = "<div class='alert alert-danger'>Por favor logue</div>";
-        header("Location: /perfis?url=$url_pessoa");
-       break;
-
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -48,26 +33,18 @@ switch(true)
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/APP/public/css/menu.css">
-    <title></title>
 </head>
 <body>
 
 <div class="wrapper">
- <?php include_once("APP/public/components_extras/sidebar.php");?>
+ <?php include_once("APP/public/components/sidebar.php");?>
     <div id="content">
-        <?php include_once("APP/public/components_extras/navbar.php");?>
+        <?php include_once("APP/public/components/navbar.php");?>
          <div class="main-content">
              <div class="row">
                <!--Render body-->
                <?php 
-                
                 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-
-                switch ($url){
-                      case '/cadastro/criar-perfis':
-                        include_once("APP/view/cadastro/criarperfil.php");
-                      break;   
-                }
                ?>
             </div>
         </div>
