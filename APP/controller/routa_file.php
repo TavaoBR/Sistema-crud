@@ -9,7 +9,7 @@ class Routas
 
     public static function criarPerfis()
     {
-        include_once("APP/view/cadastro/criarperfil.php");
+        include_once("APP/public/components/render.php");
     }
 
     public static function login()
