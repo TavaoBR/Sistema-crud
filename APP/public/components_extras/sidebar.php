@@ -6,7 +6,6 @@
                 <h3><img src="https://www.luiztools.com.br/wp-content/uploads/2017/07/CRUD.png" class="img-fluid"><span>Sistema-CRUD</span></h3>
                </div>
                <ul class="list-unstyled components">
-<<<<<<< HEAD
                <li class="active">
                   <a href="#"><img src="https://previews.123rf.com/images/triken/triken1608/triken160800029/61320775-male-avatar-profile-picture-default-user-avatar-guest-avatar-simply-human-head-vector-illustration-i.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill">&nbsp;&nbsp;&nbsp;<span>Perfil</span></a>
                   </li>
@@ -14,26 +13,6 @@
                           <a href="/perfis?url="><i class="material-icons">send</i><span>Perfis</span></a>
                        </li>
 
-=======
-                  
-                       <li  class="">
-                          <a href="/perfis?url="><i class="material-icons">send</i><span>Perfis</span></a>
-                       </li>
-
-                        <li  class="">
-                          <a href="#"><i class="material-icons">forward_to_inbox</i><span>Algo legal</span></a>
-                        </li>
-
-                        <li  class="">
-                          <a href="#"><i class="material-icons">mark_email_unread</i><span>Algo legal</span></a>
-                        </li>
-
-                        
-                        <li  class="">
-                          <a href="#"><i class="material-icons">mark_unread_chat_alt</i><span>Algo legal</span></a>
-                        </li>
-
->>>>>>> 880684b8e373a638716bfdde2448ac19793521ae
                 <li class="">
                     <a href="#"><i class="material-icons">logout</i><span>Sair</span></a>
                 </li>

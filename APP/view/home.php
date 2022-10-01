@@ -22,11 +22,8 @@ $select_fk_usuario->execute(array(
     ":fk_pessoa" => $id_pessoa
 ));
 
-<<<<<<< HEAD
 $select_fk_usuario_pegar = $select_fk_usuario->fetch(PDO::FETCH_ASSOC);
 
-=======
->>>>>>> 880684b8e373a638716bfdde2448ac19793521ae
 switch(true)
 {
 
@@ -59,12 +56,10 @@ switch(true)
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-     <link rel="stylesheet" href="/APP/public/css/menu.css">
     <title>Perfis</title>
 </head>
 <body>
 
-<<<<<<< HEAD
 <div class="wrapper">
  <?php include_once("APP/public/components_extras/sidebar.php");?>
     <div id="content">
@@ -84,13 +79,6 @@ switch(true)
        if($select_pessoa_logada_informacacoes['perfis'] <= 5 OR (empty($select_pessoa_logada_informacacoes['perfis']))){
     ?>
         
-=======
-<div class="container bootstrap snippets bootdey">
-    <h4 class="h-title">
-        New team members        
-    </h4>
-    <div class="row">
->>>>>>> 880684b8e373a638716bfdde2448ac19793521ae
       <div class="col-md-4 col-sm-6">
         <div class="block">
           <div class="thumbnail">
@@ -108,7 +96,6 @@ switch(true)
             </div>
         </div>
       </div>
-<<<<<<< HEAD
       
       <div class="alert alert-info">
       <a href="#" class="btn btn-dark" title = "Adicionar mais um perfil"><i class="fa-solid fa-user-plus" style="font-size: 25px;"></i></a>
@@ -130,100 +117,5 @@ switch(true)
 </div>
 </div>
 </div>
-=======
-    
-      <div class="col-md-4 col-sm-6">
-        <div class="block">
-            <div class="thumbnail">
-            <a href="#g" class="thumb-zoom" title="Sophia R. McJamer">
-                <img src="https://via.placeholder.com/300x300/B0C4DE/000000" alt="">
-              </a>
-              <div class="caption text-center">
-                <h6>Sophia R. McJamer <small>Media designer</small></h6>
-                <div class="icons-group">
-                          <a href="#"><i class="fa fa-google-plus"></i></a>
-                          <a href="#" ><i class="fa fa-twitter"></i></a>
-                          <a href="#"><i class="fa fa-github"></i></a>
-                      </div>
-              </div>
-            </div>
-        </div>
-      </div>
-    
-      <div class="col-md-4 col-sm-6">
-        <div class="block">
-            <div class="thumbnail">
-            <a href="#" class="thumb-zoom" title="Noah Kennedy">
-                <img src="https://via.placeholder.com/300x300/FF7F50/000000" alt="">
-              </a>
-              <div class="caption text-center">
-                <h6>Noah Kennedy <small>CEO &amp; founder</small></h6>
-                <div class="icons-group">
-                          <a href="#"><i class="fa fa-google-plus"></i></a>
-                          <a href="#" ><i class="fa fa-twitter"></i></a>
-                          <a href="#"><i class="fa fa-github"></i></a>
-                      </div>
-              </div>
-            </div>
-        </div>
-      </div>
-        
-      <div class="col-md-4 col-sm-6">
-        <div class="block">
-            <div class="thumbnail">
-            <a href="#" class="thumb-zoom" title="Noah Kennedy">
-                <img src="https://via.placeholder.com/300x300/00BFFF/000000" alt="">
-              </a>
-              <div class="caption text-center">
-                <h6>Noah Kennedy <small>CEO &amp; founder</small></h6>
-                <div class="icons-group">
-                          <a href="#"><i class="fa fa-google-plus"></i></a>
-                          <a href="#" ><i class="fa fa-twitter"></i></a>
-                          <a href="#"><i class="fa fa-github"></i></a>
-                      </div>
-              </div>
-            </div>
-        </div>
-      </div>
-        
-      <div class="col-md-4 col-sm-6">
-        <div class="block">
-            <div class="thumbnail">
-            <a href="#" class="thumb-zoom" title="Noah Kennedy">
-                <img src="https://via.placeholder.com/300x300/008B8B/000000" alt="">
-              </a>
-              <div class="caption text-center">
-                <h6>Noah Kennedy <small>CEO &amp; founder</small></h6>
-                <div class="icons-group">
-                          <a href="#"><i class="fa fa-google-plus"></i></a>
-                          <a href="#" ><i class="fa fa-twitter"></i></a>
-                          <a href="#"><i class="fa fa-github"></i></a>
-                      </div>
-              </div>
-            </div>
-        </div>
-      </div> 
-        
-      <div class="col-md-4 col-sm-6">
-        <div class="block">
-            <div class="thumbnail">
-            <a href="#" class="thumb-zoom" title="Noah Kennedy">
-                <img src="https://via.placeholder.com/300x300/5F9EA0/000000" alt="">
-              </a>
-              <div class="caption text-center">
-                <h6>Noah Kennedy <small>CEO &amp; founder</small></h6>
-                <div class="icons-group">
-                          <a href="#"><i class="fa fa-google-plus"></i></a>
-                          <a href="#" ><i class="fa fa-twitter"></i></a>
-                          <a href="#"><i class="fa fa-github"></i></a>
-                      </div>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div>    
-</div>
-
->>>>>>> 880684b8e373a638716bfdde2448ac19793521ae
 </body>
 </html>
