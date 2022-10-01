@@ -1,9 +1,38 @@
 <?php
 
 session_start();
-include_once("APP/model/bd.php");
+require_once("APP/model/bd.php");
+require_once("APP/controller/login.php");
 $conexao = new Conexao;
 $conexao->conectar();
+$verifica = new Login();
+$verifica->verifica_usuario();
+
+$id_pessoa = $_SESSION['usuarioID'];
+$url_pessoa = $_SESSION['usuarioIDUrl'];
+$fk_usuario = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_URL);
+
+$select_pessoa_logada = $conexao->conectar()->prepare("SELECT * FROM pessoa WHERE id = :id_pessoa");
+$select_pessoa_logada->execute(array(
+    ":id_pessoa" => $id_pessoa
+)); 
+
+$select_pessoa_logada_informacacoes = $select_pessoa_logada->fetch(PDO::FETCH_ASSOC);
+
+switch(true)
+{
+
+     case ( $fk_usuario != $id_pessoa):
+        $_SESSION['mensagem'] = "<div class='alert alert-danger'>Você não é esse usuario. Logue com sua conta</div>";
+        header("Location: /login");
+     break;   
+
+    case ($fk_usuario == ""):
+        $_SESSION['mensagem'] = "<div class='alert alert-danger'>Por favor logue</div>";
+        header("Location: /perfis?url=$url_pessoa");
+       break;
+
+}
 
 ?>
 <!DOCTYPE html>
@@ -59,24 +88,12 @@ $conexao->conectar();
       <div class="col-md-9 personal-info">
         <h3>Personal info</h3>
         
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form" action="#" method="POST">
           <div class="form-group">
-            <label class="col-lg-3 control-label">First name:</label>
+            <label class="col-lg-3 control-label">Nome de usuario:</label>
             <div class="col-lg-8">
               <input class="form-control" type="text" value="dey-dey">
               <input type="text" name="" id="">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Last name:</label>
-            <div class="col-lg-8">
-              <input class="form-control" type="text" value="bootdey">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Company:</label>
-            <div class="col-lg-8">
-              <input class="form-control" type="text" value="">
             </div>
           </div>
           <div class="form-group">
@@ -84,24 +101,6 @@ $conexao->conectar();
             <div class="col-lg-8">
               <input class="form-control" type="text" value="janesemail@gmail.com">
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 control-label">Time Zone:</label>
-            <div class="col-lg-8">
-              <div class="ui-select">
-                <select id="user_time_zone" class="form-control">
-                  <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                  <option value="Alaska">(GMT-09:00) Alaska</option>
-                  <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                  <option value="Arizona">(GMT-07:00) Arizona</option>
-                  <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                  <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                  <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                  <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                </select>
-              </div>
-            </div>
-          </div>
         </form>
       </div>
   </div>

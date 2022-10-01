@@ -88,9 +88,15 @@ input[type='email']::-webkit-input-placeholder, input[type='password']::-webkit-
     color:    #fff;
 }
 
+
 input[type='text']:-moz-placeholder, input[type='password']:-moz-placeholder { 
     color:    #fff;
 }
+
+input[type='email']:-moz-placeholder, input[type='password']:-moz-placeholder { 
+    color:    #fff;
+}
+
 input[type='text']::-moz-placeholder, input[type='password']::-moz-placeholder { 
     color:    #fff;
 }
