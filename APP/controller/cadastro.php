@@ -252,14 +252,14 @@ class Cadastro extends Conexao
                             mkdir($_UP['pasta'], 0777);
 
                             move_uploaded_file($_FILES['imagem']['tmp_name'], $_UP['pasta'].$imagem);
-                                $_SESSION['mensagm'] = "<div class='alert alert-success'>
+                                $_SESSION['mensagem'] = "<div class='alert alert-success'>
                                  Perfil criado com sucesso
                                 </div>";
                                 header("Location: /cadastro/criar-perfis?id=$id_pessoa");
                                     
                         }else{
 
-                            $_SESSION['mensagm'] = "<div class='alert alert-success'>
+                            $_SESSION['mensagem'] = "<div class='alert alert-success'>
                             Erro, tente novamente mais tarde
                            </div>";
                            header("Location: /cadastro/criar-perfis?id=$id_pessoa");

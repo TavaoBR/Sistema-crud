@@ -10,7 +10,7 @@
 
     <?php if(isset($select_fk_usuario_pegar['fk_usuario'])){
       
-       if($select_pessoa_logada_informacacoes['perfis'] <= 5 OR (empty($select_pessoa_logada_informacacoes['perfis']))){
+       if($select_pessoa_logada_informacacoes['perfis'] <= 5 ){
 
     ?>
         
