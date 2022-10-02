@@ -152,10 +152,6 @@ class Cadastro extends Conexao
         $conexao->conectar();
         $verifica = new login();
         $verifica->verifica_usuario();
-
-
-
-                               
               
         if(isset($_POST['Criar']))
         {
@@ -206,7 +202,42 @@ class Cadastro extends Conexao
                  break;   
 
                  case($escolha_ter_pin == "NAO"):
-                   
+
+                    $insert_perfil = "INSERT INTO perfil(nome_perfil, image, fk_pessoa) VALUES (:nome_perfil, :image, :fk_pessoa)";
+                    $stm =  $conexao->conectar()->prepare($insert_perfil);
+                    $stm->execute(array(
+                       ":nome_perfil" => $nome_perfil,
+                       ":image" => $imagem,
+                       "fk_pessoa" => $id_pessoa
+                    ));
+
+                    if($stm->rowCount())
+                    {
+
+                        $update_pessoa_perfis_ = "UPDATE pessoa SET perfis = :perfis WHERE id = :id_pessoa";
+                        $stm = $conexao->conectar()->prepare($update_pessoa_perfis_);
+                        $stm->execute(array(
+                          ":perfis" => $count_perfil,
+                          ":id_pessoa" => $id_pessoa
+                        ));
+
+
+                               $_UP['pasta'] = "APP/public/img/usuario/$id_pessoa/";
+                                mkdir($_UP['pasta'], 0777);
+
+                            move_uploaded_file($_FILES['imagem']['tmp_name'], $_UP['pasta'].$imagem);
+                                $_SESSION['mensagem'] = "<div class='alert alert-success'>
+                                 Perfil criado com sucesso
+                                </div>";
+                                header("Location: /cadastro/criar-perfis?id=$id_pessoa");
+
+                    }else{
+                        $_SESSION['mensagem'] = "<div class='alert alert-success'>
+                        Erro, tente novamente mais tarde
+                       </div>";
+                       header("Location: /cadastro/criar-perfis?id=$id_pessoa");
+                    }
+
                  break;   
 
                     case($escolha_ter_pin == "SIM"):
@@ -239,6 +270,9 @@ class Cadastro extends Conexao
                            "fk_pessoa" => $id_pessoa
                         ));
 
+                        if($stm->rowCount())
+                        {
+
                         $update_pessoa_perfis = "UPDATE pessoa SET perfis = :perfis WHERE id = :id_pessoa";
                         $stm = $conexao->conectar()->prepare($update_pessoa_perfis);
                         $stm->execute(array(
@@ -246,8 +280,6 @@ class Cadastro extends Conexao
                           ":id_pessoa" => $id_pessoa
                         ));
 
-                        if($stm->rowCount())
-                        {
                             $_UP['pasta'] = "APP/public/img/usuario/$id_pessoa/";
                             mkdir($_UP['pasta'], 0777);
 
