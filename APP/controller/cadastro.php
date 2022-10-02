@@ -148,9 +148,9 @@ class Cadastro extends Conexao
     {
         session_start();
               
-        if(isset($_POST['Cadastrar']))
+        if(isset($_POST['Criar']))
         {
-          
+         
             
         }else{
             

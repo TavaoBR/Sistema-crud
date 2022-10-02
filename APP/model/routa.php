@@ -21,6 +21,10 @@ switch ($url){
         Routas::criarPerfis();
     break;   
 
+    case '/cadastro/criar-perfis-valida':
+        Cadastro::criarPerfil();
+    break;    
+
     case '/login':
       Routas::login();
     break;    
