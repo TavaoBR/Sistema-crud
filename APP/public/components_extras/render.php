@@ -76,7 +76,7 @@ $url_pessoa = $_SESSION['usuarioIDUrl'];
                                         ":fk_pessoa" => $id_pessoa
                                     ));
 
-                                    $select_fk_usuario_pegar = $select_fk_usuario->fetch(PDO::FETCH_ASSOC);
+                                    $select_fk_usuario_pegar = $select_fk_usuario->fetchAll();
 
                                     switch(true)
                                     {
