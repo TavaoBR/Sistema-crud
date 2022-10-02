@@ -68,6 +68,9 @@ $url_pessoa = $_SESSION['usuarioIDUrl'];
 
                                     $select_pessoa_logada_informacacoes = $select_pessoa_logada->fetch(PDO::FETCH_ASSOC);
 
+                                    
+
+
                                     $select_fk_usuario = $conexao->conectar()->prepare("SELECT * FROM perfil WHERE fk_pessoa = :fk_pessoa");
                                     $select_fk_usuario->execute(array(
                                         ":fk_pessoa" => $id_pessoa

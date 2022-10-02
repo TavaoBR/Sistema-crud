@@ -6,6 +6,9 @@
 	<div class="row">
       <!-- left column -->
     <?php 
+
+      
+
       if(isset($_SESSION['mensagem']))
       {
           echo  $_SESSION['mensagem'];
@@ -42,11 +45,11 @@
         document.getElementById("input-exibe-file").addEventListener("change", readFileImg, false);
 
       </script>
-
+<br>
           <div class="form-group">
             <label class="col-lg-3 control-label">Nome de usuario:</label>
             <div class="col-lg-8">
-              <input class="form-control" type="text" value="" name="nome">
+              <input class="form-control" type="text" value="<?php if(isset($_SESSION['nome_perfil'])){ echo $_SESSION['nome_perfil']; unset($_SESSION['nome_perfil']);}?>" name="nome">
             </div>
           </div>
 <br>          
@@ -57,6 +60,14 @@
                     <option value="">Selecione uma opção</option>
                     <option value="SIM">Sim</option>
                     <option value="NAO">Não</option>
+                    <?php 
+                     if(isset($_SESSION['escolha_ter_pin'])){
+                    ?>
+                    <option value="<?php echo $_SESSION['escolha_ter_pin']?>" selected><?php echo $_SESSION['escolha_ter_pin']?></option>
+                    <?php
+                    unset($_SESSION['escolha_ter_pin']);
+                  }
+                  ?>
                 </select>
             </div>
           </div>
@@ -69,6 +80,13 @@
             </div>
           </div>
           <br>
+
+          <?php 
+           if(isset($_SESSION['pin'])){
+            echo $_SESSION['pin'];
+            unset($_SESSION['pin']);
+           }
+          ?>
 
           <div class="form-group">
              <button type="submit" name="Criar" class="btn btn-primary">Criar</button>
