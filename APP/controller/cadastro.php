@@ -1,6 +1,7 @@
 <?php 
 
 include_once("APP/model/bd.php");
+include_once("APP/controller/login.php");
 
 class Cadastro extends Conexao
 {
@@ -147,13 +148,64 @@ class Cadastro extends Conexao
     static function criarPerfil()
     {
         session_start();
+        $verifica = new login();
+        $verifica->verifica_usuario();
               
         if(isset($_POST['Criar']))
         {
          
+            $id_pessoa = $_POST['id_pessoa'];
+            $escolha_ter_pin = $_POST['escolha_ter_pin'];
+            $nome_perfil = $_POST['nome'];
+            $pin = $_POST['PIN'];
+            $imagem = $_FILES['imagem']['name'];
+
+            switch(true)
+            {
+                case ($nome_perfil == "" && $escolha_ter_pin == "" && (empty($imagem))):
+                    $_SESSION['mensagem'] = "<div class = 'alert alert-danger' id='tempo'>Preencha os dados e clique criar</div>";
+                    header("Location: /cadastro/criar-perfis?id=$id_pessoa");
+                break;
+
+                 case ($nome_perfil == ""):
+                    $_SESSION['mensagem'] = "<div class = 'alert alert-danger' id='tempo'>Preencha o campo nomer</div>";
+                    header("Location: /cadastro/criar-perfis?id=$id_pessoa");
+                 break;   
+
+                 case ($escolha_ter_pin == ""):
+                    $_SESSION['mensagem'] = "<div class = 'alert alert-danger' id='tempo'>Escolha uma opção </div>";
+                    header("Location: /cadastro/criar-perfis?id=$id_pessoa");
+                 break;  
+                 
+                 case ((empty($imagem))):
+                    $_SESSION['mensagem'] = "<div class = 'alert alert-danger' id='tempo'>Selecione uma imagem </div>";
+                    header("Location: /cadastro/criar-perfis?id=$id_pessoa");
+                 break;   
+
+                 case($escolha_ter_pin == "NAO"):
+                   
+                 break;   
+
+                    case($escolha_ter_pin == "SIM"):
+                       switch(true)
+                       {
+
+                        case ($pin == ""):
+                            $_SESSION['mensagem'] = "<div class = 'alert alert-danger' id='tempo'>Digite o pin </div>";
+                            header("Location: /cadastro/criar-perfis?id=$id_pessoa");
+                        break;    
+                        
+                        default:
+                        
+                        break;
+                       }
+                    break;  
+            }
+            
+            
             
         }else{
-            
+            header("Location: /login");
         }
         
     }

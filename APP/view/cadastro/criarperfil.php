@@ -5,18 +5,25 @@
       <hr>
 	<div class="row">
       <!-- left column -->
+    <?php 
+      if(isset($_SESSION['mensagem']))
+      {
+          echo  $_SESSION['mensagem'];
 
+          unset( $_SESSION['mensagem']);
+      }
+    ?>
       
       <!-- edit form column -->
       <div class="col-md-9 personal-info">    
-        <form class="form-horizontal" role="form" action="/cadastro/criar-perfis-valida" method="POST">
+        <form class="form-horizontal" role="form" action="/cadastro/criar-perfis-valida" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="id_pessoa" value="<?php echo $id_pessoa?>">
 
         <div class="col-md-3">
         <div class="text-center">
           <img src="" id="preview" class="avatar img-circle img-thumbnail rounded-pill">
           <h6>Escolha uma foto</h6>
-          <input type="file" id="input-exibe-file" class="form-control" accept="image/*" name="file_">
+          <input type="file" id="input-exibe-file" class="form-control" accept="image/*" name="imagem">
         </div>
       </div>
 
@@ -46,7 +53,7 @@
           <div class="form-group">
             <label class="col-lg-3 control-label">Deseja ter PIN?</label>
             <div class="col-lg-8">
-                <select name="" id="escolha">
+                <select name="escolha_ter_pin" id="escolha">
                     <option value="">Selecione uma opção</option>
                     <option value="SIM">Sim</option>
                     <option value="NAO">Não</option>
@@ -64,7 +71,7 @@
           <br>
 
           <div class="form-group">
-             <button type="submit" name="Criar">Criar</button>
+             <button type="submit" name="Criar" class="btn btn-primary">Criar</button>
             </div>
           </div>
         </form>
