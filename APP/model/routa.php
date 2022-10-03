@@ -29,6 +29,14 @@ switch ($url){
        Routas::renderLayout1();
      break;   
 
+      case '/perfil/valida-edicao':
+
+      break;  
+
+      case '/perfil/deleta':
+        Routas::renderLayout1(); 
+      break;  
+
     case '/login':
       Routas::login();
     break;    

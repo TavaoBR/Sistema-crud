@@ -1,125 +1,88 @@
-<style>
-    .inf-content{
-    border:1px solid #DDDDDD;
-    -webkit-border-radius:10px;
-    -moz-border-radius:10px;
-    border-radius:10px;
-    box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3);
-}			               
-</style>
-<div class="container bootstrap snippets bootdey">
-<div class="panel-body inf-content">
-    <div class="row">
-        <div class="col-md-4">
-            <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail rounded-pill isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario"> 
-            <ul title="Ratings" class="list-inline ratings text-center">
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-            </ul>
-        </div>
-        <div class="col-md-6">
-            <strong>Information</strong><br>
-            <div class="table-responsive">
-            <table class="table table-user-information">
-                <tbody>
-                    <tr>        
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-asterisk text-primary"></span>
-                                Identificacion                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                            123456789     
-                        </td>
-                    </tr>
-                    <tr>    
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-user  text-primary"></span>    
-                                Name                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                            Bootdey     
-                        </td>
-                    </tr>
-                    <tr>        
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-cloud text-primary"></span>  
-                                Lastname                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                            Bootstrap  
-                        </td>
-                    </tr>
+<div class="container pt-3 mb-3">
+        <h2 class="text-center">Editar</h2>
+              
+        <div class="container">
+    <div class="contact__wrapper shadow-lg mt-n9">
+        <div class="row no-gutters">                
+            <div class="col-lg-7=5 contact-form__wrapper p-5 order-lg-1">
+                <div>
+                    <?php 
+                    if(isset($_SESSION['mensagem'])){
+                         echo $_SESSION['mensagem'];
+                         unset($_SESSION['mensagem']);
+                    }
 
-                    <tr>        
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-bookmark text-primary"></span> 
-                                Username                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                            bootnipets 
-                        </td>
-                    </tr>
+                    ?>
+                </div>
+                <form method="post" action="#" class="contact-form form-validate" novalidate="novalidate" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group">
+                                <label class="required-field" for="firstName">Nome  <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="titulo_materia"  value="<?php echo $select_fk_usuario_pegar['nome_perfil']?>" name="nome" placeholder="">
+                            </div>
+                        </div>
 
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group">
+                                <label class="required-field" for="firstName">Número do PIN <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="titulo_materia"  value="<?php echo $select_fk_usuario_pegar['pin']?>" name="pin" placeholder="">
+                            </div>
+                        </div>
 
-                    <tr>        
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-eye-open text-primary"></span> 
-                                Role                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                            Admin
-                        </td>
-                    </tr>
-                    <tr>        
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-envelope text-primary"></span> 
-                                Email                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                            noreply@email.com  
-                        </td>
-                    </tr>
-                    <tr>        
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-calendar text-primary"></span>
-                                created                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                            20 jul 20014
-                        </td>
-                    </tr>
-                    <tr>        
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-calendar text-primary"></span>
-                                Modified                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                             20 jul 20014 20:00:00
-                        </td>
-                    </tr>                                    
-                </tbody>
-            </table>
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group">
+                                <label class="required-field" for="firstName">Confirme E-mail <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="titulo_materia"  value="" name="confirme-email" placeholder="">
+                            </div>
+                        </div>
+    
+    
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group">
+                                <label class="required-field" for="firstName">Senha <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" id="titulo_materia"  value="" name="senha" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group">
+                                <label class="required-field" for="firstName">Alterar imagem<span class="text-danger">*</span></label>
+                                <input type="file" id="input-exibe-file" class="form-control" accept="image/*" name="imagem">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 mb-3">
+                        <img src="" id="preview" class="avatar img-circle img-thumbnail rounded-pill" width="150px">
+                        </div>
+
+                        <div class="col-sm-12 mb-3">
+                            <button type="submit" name="Cadastrar" class="btn btn-primary">Enviar</button>
+                        </div>
+
+                        </form>
+                    </div>
+
+                </form>
             </div>
+            <!-- End Contact Form Wrapper -->
+    
         </div>
     </div>
 </div>
-</div>
+
+<script>
+        function readFileImg(){
+            if(this.files && this.files[0]){
+                var file = new FileReader();
+                file.onload = function(e)
+                {
+                    document.getElementById("preview").src = e.target.result;
+                };
+                file.readAsDataURL(this.files[0]);
+            }
+        }
+
+        document.getElementById("input-exibe-file").addEventListener("change", readFileImg, false);
+
+      </script>

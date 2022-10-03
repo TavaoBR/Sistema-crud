@@ -8,7 +8,7 @@
 }			               
 </style>
 <div class="container bootstrap snippets bootdey">
-    <h2 class="text-center">Visualização Perfil</h2>
+    <h2 class="text-center">Visualização Perfil <?php echo $select_fk_usuario_pegar['nome_perfil']?></h2>
  <br>
 <div class="panel-body inf-content">
     <div class="row">
@@ -16,7 +16,7 @@
             <img alt="" style="width:400px;" title="" class="img-circle img-thumbnail rounded-pill isTooltip" src="<?php echo "/APP/public/img/usuario/".$select_fk_usuario_pegar['fk_pessoa']."/".$select_fk_usuario_pegar['image']?>" data-original-title="Usuario"> 
         </div>
         <div class="col-md-6">
-            <strong>Information</strong><br>
+
             <div class="table-responsive">
             <table class="table table-user-information">
                 <tbody>
@@ -61,7 +61,7 @@
                             </strong>
                         </td>
                         <td class="text-primary">
-                            <a href="#" class="btn btn-primary"><i class="fa-solid fa-user-pen"></i></a>
+                            <a href="/perfil/editar-perfil?fk_pessoa=<?php echo $select_fk_usuario_pegar['id']?>" class="btn btn-primary"><i class="fa-solid fa-user-pen"></i></a>
                         </td>
                     </tr>
                     <tr>        
