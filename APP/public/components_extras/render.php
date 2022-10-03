@@ -101,7 +101,7 @@ $url_pessoa = $_SESSION['usuarioIDUrl'];
 
                         $fk_pessoa = filter_input(INPUT_GET, 'fk_pessoa', FILTER_SANITIZE_NUMBER_INT);
 
-                        $select_fk_usuario = $conexao->conectar()->prepare("SELECT * FROM perfil WHERE fk_pessoa = :fk_pessoa");
+                        $select_fk_usuario = $conexao->conectar()->prepare("SELECT * FROM perfil WHERE id = :fk_pessoa");
                         $select_fk_usuario->execute(array(
                             ":fk_pessoa" => $fk_pessoa
                         ));
@@ -110,8 +110,23 @@ $url_pessoa = $_SESSION['usuarioIDUrl'];
 
 
                         include_once("APP/view/outros/editar.php");
+
+                      break; 
+                      
+                      
+                      case '/perfil/visualizar':
                         
-                      break;  
+                        $fk_pessoa = filter_input(INPUT_GET, 'fk_pessoa', FILTER_SANITIZE_NUMBER_INT);
+
+                        $select_fk_usuario = $conexao->conectar()->prepare("SELECT * FROM perfil WHERE id = :fk_pessoa");
+                        $select_fk_usuario->execute(array(
+                            ":fk_pessoa" => $fk_pessoa
+                        ));
+
+                        $select_fk_usuario_pegar =  $select_fk_usuario->fetch(PDO::FETCH_ASSOC);
+
+                        include_once("APP/view/outros/visualizar.php");
+                      break; 
                       
                 }
                ?>

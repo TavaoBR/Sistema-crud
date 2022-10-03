@@ -17,7 +17,7 @@ switch ($url){
         Cadastro::cadastroPessoa();
     break;
 
-    case ('/cadastro/criar-perfis'):
+    case '/cadastro/criar-perfis':
         Routas::renderLayout1();
     break;   
 
@@ -38,8 +38,12 @@ switch ($url){
     break;   
 
     case '/perfis':
-        Routas::renderLayout1()();
+        Routas::renderLayout1();
     break;
+
+    case '/perfil/visualizar':
+        Routas::renderLayout1();
+    break;    
     
     default:
        echo "404";

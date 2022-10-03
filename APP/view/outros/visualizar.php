@@ -8,17 +8,12 @@
 }			               
 </style>
 <div class="container bootstrap snippets bootdey">
+    <h2 class="text-center">Visualização Perfil</h2>
+ <br>
 <div class="panel-body inf-content">
     <div class="row">
         <div class="col-md-4">
-            <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail rounded-pill isTooltip" src="https://bootdey.com/img/Content/avatar/avatar7.png" data-original-title="Usuario"> 
-            <ul title="Ratings" class="list-inline ratings text-center">
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-            </ul>
+            <img alt="" style="width:400px;" title="" class="img-circle img-thumbnail rounded-pill isTooltip" src="<?php echo "/APP/public/img/usuario/".$select_fk_usuario_pegar['fk_pessoa']."/".$select_fk_usuario_pegar['image']?>" data-original-title="Usuario"> 
         </div>
         <div class="col-md-6">
             <strong>Information</strong><br>
@@ -33,7 +28,7 @@
                             </strong>
                         </td>
                         <td class="text-primary">
-                            123456789     
+                            <?php echo $select_fk_usuario_pegar['id']?>   
                         </td>
                     </tr>
                     <tr>    
@@ -44,76 +39,40 @@
                             </strong>
                         </td>
                         <td class="text-primary">
-                            Bootdey     
-                        </td>
-                    </tr>
-                    <tr>        
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-cloud text-primary"></span>  
-                                Lastname                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                            Bootstrap  
-                        </td>
-                    </tr>
-
-                    <tr>        
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-bookmark text-primary"></span> 
-                                Username                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                            bootnipets 
-                        </td>
-                    </tr>
-
-
-                    <tr>        
-                        <td>
-                            <strong>
-                                <span class="glyphicon glyphicon-eye-open text-primary"></span> 
-                                Role                                                
-                            </strong>
-                        </td>
-                        <td class="text-primary">
-                            Admin
+                            <?php echo $select_fk_usuario_pegar['nome_perfil']?>     
                         </td>
                     </tr>
                     <tr>        
                         <td>
                             <strong>
                                 <span class="glyphicon glyphicon-envelope text-primary"></span> 
-                                Email                                                
+                                PIN                                                
                             </strong>
                         </td>
                         <td class="text-primary">
-                            noreply@email.com  
+                            <?php echo $select_fk_usuario_pegar['pin']?>  
                         </td>
                     </tr>
                     <tr>        
                         <td>
                             <strong>
                                 <span class="glyphicon glyphicon-calendar text-primary"></span>
-                                created                                                
+                                  Alterar dados                                               
                             </strong>
                         </td>
                         <td class="text-primary">
-                            20 jul 20014
+                            <a href="#" class="btn btn-primary"><i class="fa-solid fa-user-pen"></i></a>
                         </td>
                     </tr>
                     <tr>        
                         <td>
                             <strong>
                                 <span class="glyphicon glyphicon-calendar text-primary"></span>
-                                Modified                                                
+                                Excluir Perfil                                                
                             </strong>
                         </td>
                         <td class="text-primary">
-                             20 jul 20014 20:00:00
+                            <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
                         </td>
                     </tr>                                    
                 </tbody>
