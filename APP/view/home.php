@@ -73,7 +73,7 @@
             <h4 class="h5 g-color-black g-font-weight-600 g-mb-10"><?php echo $puxar['nome_perfil']?></h4>
             <p>
             <a href="#" class="btn btn-info" title="Visualizar Profile"><i class="fa-solid fa-eye"></i></a> 
-            <a href="#" class="btn btn-primary" title="Editar Perfil"><i class="fa-solid fa-user-pen"></i></a>   
+            <a href="/perfil/editar-perfil?fk_pessoa=<?php $puxar['fk_pessoa']?>" class="btn btn-primary" title="Editar Perfil"><i class="fa-solid fa-user-pen"></i></a>   
             <a href="#" class="btn btn-danger" title="Excluir Perfil"><i class="fa-solid fa-trash-can"></i></a>
           </p>
           </article>
