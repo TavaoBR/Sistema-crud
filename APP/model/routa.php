@@ -17,8 +17,8 @@ switch ($url){
         Cadastro::cadastroPessoa();
     break;
 
-    case '/cadastro/criar-perfis':
-        Routas::criarPerfis();
+    case ('/cadastro/criar-perfis'):
+        Routas::renderLayout1();
     break;   
 
     case '/cadastro/criar-perfis-valida':
@@ -26,7 +26,7 @@ switch ($url){
     break;    
 
      case '/perfil/editar-perfil':
-       Routas::editarPerfis();
+       Routas::renderLayout1();
      break;   
 
     case '/login':
@@ -38,7 +38,7 @@ switch ($url){
     break;   
 
     case '/perfis':
-        Routas::perfis();
+        Routas::renderLayout1()();
     break;
     
     default:
