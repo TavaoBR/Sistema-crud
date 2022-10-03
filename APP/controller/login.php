@@ -38,9 +38,10 @@ class Login extends Conexao
                 
                 $select = "SELECT * FROM pessoa WHERE email = :u AND senha = md5(:s) LIMIT 1";
                 $query = $conexao->conectar()->prepare($select);
-                $query->bindParam(':u', $email, PDO::PARAM_STR);
-                $query->bindParam(':s', $senha, PDO::PARAM_STR);
-                $query->execute();
+                $query->execute(array(
+                    ":u" => $email,
+                    ":s" => $senha
+                ));
                 
                 $assoc_user = $query->fetch(PDO::FETCH_ASSOC); 
 
