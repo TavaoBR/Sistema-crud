@@ -17,4 +17,9 @@ class Routas
         include_once("APP/public/components_extras/render.php");
     }
 
+    public static function renderLayout2()
+    {
+        include_once("APP/public/components/render.php");
+    }
+
 }

@@ -11,6 +11,14 @@ error_reporting(0);
 $id_pessoa = $_SESSION['usuarioID'];
 $url_pessoa = $_SESSION['usuarioIDUrl'];
 
+
+$select_pessoa_logada = $conexao->conectar()->prepare("SELECT * FROM pessoa WHERE id = :id_pessoa");
+$select_pessoa_logada->execute(array(
+":id_pessoa" => $id_pessoa
+)); 
+
+$select_pessoa_logada_informacacoes = $select_pessoa_logada->fetch(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,9 +41,63 @@ $url_pessoa = $_SESSION['usuarioIDUrl'];
 <body>
 
 <div class="wrapper">
- <?php include_once("APP/public/components_extras/sidebar.php");?>
+<div class="body-overlay"></div>
+         <nav id="sidebar">
+              <div class="sidebar-header">
+                <h3><img src="https://www.luiztools.com.br/wp-content/uploads/2017/07/CRUD.png" class="img-fluid"><span>Sistema-CRUD</span></h3>
+               </div>
+               <ul class="list-unstyled components">
+               <li class="active">
+                  <a href="#"><img src="https://previews.123rf.com/images/triken/triken1608/triken160800029/61320775-male-avatar-profile-picture-default-user-avatar-guest-avatar-simply-human-head-vector-illustration-i.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill">&nbsp;&nbsp;&nbsp;<span>Perfil</span></a>
+                  </li>
+                       <li class="">
+                          <a href="/perfis?url=<?php echo $url_pessoa?>"><i class="material-icons">send</i><span>Perfis</span></a>
+                       </li>
+
+                <li class="">
+                    <a href="#"><i class="material-icons">logout</i><span>Sair</span></a>
+                </li>
+              </ul> 
+        </nav>
     <div id="content">
-        <?php include_once("APP/public/components_extras/navbar.php");?>
+    <div class="top-navbar">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="d-xl-block d-lg-block d-md-mone d-none">
+                        <span class="material-icons">arrow_back_ios</span>
+                    </button>
+					
+					<a class="navbar-brand"> Sistema-CRUD </a>
+					
+                    <button class="d-inline-block d-lg-none ml-auto more-button" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="material-icons">more_vert</span>
+                    </button>
+
+                    <div class="collapse navbar-collapse d-lg-block d-xl-block d-sm-none d-md-none d-none" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">   
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+								<span class="material-icons">apps</span>
+								</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+								<span class="material-icons">person</span>
+								</a>
+                            </li>
+							<li class="nav-item">
+                                <a class="nav-link" href="#">
+								<span class="material-icons">settings</span>
+								</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+	    </div>
          <div class="main-content">
              <div class="row">
                <!--Render body-->
@@ -46,14 +108,7 @@ $url_pessoa = $_SESSION['usuarioIDUrl'];
                 switch ($url){
                       case '/cadastro/criar-perfis':
 
-                          $fk_usuario = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_URL);
-
-                          $select_pessoa_logada = $conexao->conectar()->prepare("SELECT * FROM pessoa WHERE id = :id_pessoa");
-                          $select_pessoa_logada->execute(array(
-                              ":id_pessoa" => $id_pessoa
-                          )); 
-
-                          $select_pessoa_logada_informacacoes = $select_pessoa_logada->fetch(PDO::FETCH_ASSOC);
+                          
                         
                           include_once("APP/view/cadastro/criarperfil.php");
                       break;   
@@ -61,16 +116,7 @@ $url_pessoa = $_SESSION['usuarioIDUrl'];
 
                       case '/perfis':
 
-                                    $id_url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
-                                    $select_pessoa_logada = $conexao->conectar()->prepare("SELECT * FROM pessoa WHERE id = :id_pessoa");
-                                    $select_pessoa_logada->execute(array(
-                                        ":id_pessoa" => $id_pessoa
-                                    )); 
-
-                                    $select_pessoa_logada_informacacoes = $select_pessoa_logada->fetch(PDO::FETCH_ASSOC);
-
-                                    
-
+                                    $id_url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);                            
 
                                     $select_fk_usuario = $conexao->conectar()->prepare("SELECT * FROM perfil WHERE fk_pessoa = :fk_pessoa");
                                     $select_fk_usuario->execute(array(
@@ -83,7 +129,6 @@ $url_pessoa = $_SESSION['usuarioIDUrl'];
                                     {
 
                                         case ($id_url != $select_pessoa_logada_informacacoes['id_url']):
-                                            $_SESSION['mensagem'] = "<div class='alert alert-danger'>Você não é esse usuario. Logue com sua conta</div>";
                                             header("Location: /login");
                                         break;   
 
@@ -95,38 +140,6 @@ $url_pessoa = $_SESSION['usuarioIDUrl'];
                                     }
                         include_once("APP/view/home.php");
                       break; 
-
-
-                      case '/perfil/editar-perfil':
-
-                        $fk_pessoa = filter_input(INPUT_GET, 'fk_pessoa', FILTER_SANITIZE_NUMBER_INT);
-
-                        $select_fk_usuario = $conexao->conectar()->prepare("SELECT * FROM perfil WHERE id = :fk_pessoa");
-                        $select_fk_usuario->execute(array(
-                            ":fk_pessoa" => $fk_pessoa
-                        ));
-
-                        $select_fk_usuario_pegar = $select_fk_usuario->fetch(PDO::FETCH_ASSOC);
-
-
-                        include_once("APP/view/outros/editar.php");
-
-                      break; 
-                      
-                      
-                      case '/perfil/visualizar':
-                        
-                        $fk_pessoa = filter_input(INPUT_GET, 'fk_pessoa', FILTER_SANITIZE_NUMBER_INT);
-
-                        $select_fk_usuario = $conexao->conectar()->prepare("SELECT * FROM perfil WHERE id = :fk_pessoa");
-                        $select_fk_usuario->execute(array(
-                            ":fk_pessoa" => $fk_pessoa
-                        ));
-
-                        $select_fk_usuario_pegar =  $select_fk_usuario->fetch(PDO::FETCH_ASSOC);
-
-                        include_once("APP/view/outros/visualizar.php");
-                      break; 
                       
                 }
                ?>
@@ -134,5 +147,29 @@ $url_pessoa = $_SESSION['usuarioIDUrl'];
         </div>
   </div>
 
+
+
+  <script src="/APP/public/scripts/jquery-3.3.1.slim.min.js"></script>
+<script src="/APP/public/scripts/popper.min.js"></script>
+<script src="/APP/public/scripts/bootstrap.min.js"></script>
+<script src="/APP/public/scripts/jquery-3.3.1.min.js"></script>
+<script src="/APP/public/scripts/jquery.mask.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+				$('#content').toggleClass('active');
+            });
+			
+			 $('.more-button,.body-overlay').on('click', function () {
+                $('#sidebar,.body-overlay').toggleClass('show-nav');
+            });
+			
+        });
+</script>
 </body>
 </html>

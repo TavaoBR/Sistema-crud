@@ -1,8 +1,6 @@
 <?php 
+require_once("APP/controller/controlador_arquivo.php");
 
-include_once("APP/controller/cadastro.php");
-include_once("APP/controller/login.php");
-include_once("APP/controller/routa_file.php");
 
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -26,7 +24,7 @@ switch ($url){
     break;    
 
      case '/perfil/editar-perfil':
-       Routas::renderLayout1();
+       Routas::renderLayout2();
      break;   
 
       case '/perfil/valida-edicao':
@@ -34,7 +32,7 @@ switch ($url){
       break;  
 
       case '/perfil/deleta':
-        Routas::renderLayout1(); 
+        Routas::renderLayout2(); 
       break;  
 
     case '/login':
@@ -50,7 +48,7 @@ switch ($url){
     break;
 
     case '/perfil/visualizar':
-        Routas::renderLayout1();
+        Routas::renderLayout2();
     break;    
     
     default:

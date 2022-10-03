@@ -1,3 +1,4 @@
+<title>Editar perfil</title>
 <div class="container pt-3 mb-3">
         <h2 class="text-center">Editar</h2>
               
