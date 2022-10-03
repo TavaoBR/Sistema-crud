@@ -12,6 +12,16 @@ class Routas
         include_once("APP/public/components_extras/render.php");
     }
 
+    public static function editarPerfis()
+    {
+        include_once("APP/public/components_extras/render.php");
+    }
+
+    public static function deletaPerfis()
+    {
+        include_once("APP/public/components_extras/render.php");
+    }
+
     public static function login()
     {
         include_once("APP/view/login/login.php");

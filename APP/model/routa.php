@@ -25,6 +25,10 @@ switch ($url){
         Cadastro::criarPerfil();
     break;    
 
+     case '/perfil/editar-perfil':
+       Routas::editarPerfis();
+     break;   
+
     case '/login':
       Routas::login();
     break;    

@@ -10,7 +10,7 @@
                   <a href="#"><img src="https://previews.123rf.com/images/triken/triken1608/triken160800029/61320775-male-avatar-profile-picture-default-user-avatar-guest-avatar-simply-human-head-vector-illustration-i.jpg" alt="Avatar Logo" style="width:40px;" class="rounded-pill">&nbsp;&nbsp;&nbsp;<span>Perfil</span></a>
                   </li>
                        <li class="">
-                          <a href="/perfis?url="><i class="material-icons">send</i><span>Perfis</span></a>
+                          <a href="/perfis?url=<?php echo $url_pessoa?>"><i class="material-icons">send</i><span>Perfis</span></a>
                        </li>
 
                 <li class="">

@@ -58,11 +58,7 @@
 }
 </style>
 
-<?php 
-      
-      if($select_pessoa_logada_informacacoes['perfis'] <= 5 ){
 
-   ?>
       
 <div class="container">
   <h2 class="text-center">Perfis</h2>
@@ -73,7 +69,7 @@
      ?> 
         <div class="col-md-6 col-lg-4 g-mb-30">
           <article class="u-shadow-v18 g-bg-white text-center rounded g-px-20 g-py-40 g-mb-5">
-            <img class="d-inline-block img-fluid mb-4" src="<?php echo "APP/public/img/usuario/".$puxar['fk_pessoa']."/".$puxar['image']?>" style="width:50%;" title="" class="img-circle img-thumbnail rounded-pill" alt="Image Description">
+            <img class="d-inline-block img-fluid mb-4 img-circle img-thumbnail rounded-pill" src="<?php echo "APP/public/img/usuario/".$puxar['fk_pessoa']."/".$puxar['image']?>" style="width:50%;" title=""  alt="Image Description">
             <h4 class="h5 g-color-black g-font-weight-600 g-mb-10"><?php echo $puxar['nome_perfil']?></h4>
             <p>
             <a href="#" class="btn btn-info" title="Visualizar Profile"><i class="fa-solid fa-eye"></i></a> 
@@ -88,8 +84,17 @@
         
 
     </div>
-</div>
 
+    <?php 
+      
+  if($select_pessoa_logada_informacacoes['perfis'] < 5 ){
+?>
+  <div class="row"> 
+          <div class="">Adicionar perfil <a href="/cadastro/criar-perfis?id=<?php echo $select_pessoa_logada_informacacoes['id']?>" class="btn btn-dark"><i class="fa-solid fa-user-plus" style="font-size: 25px;"></i></a></div>
+  </div>
 <?php 
 }
 ?>
+</div>
+
+

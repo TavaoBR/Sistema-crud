@@ -7,6 +7,7 @@ $conexao->conectar();
 $verifica = new Login();
 $verifica->verifica_usuario();
 
+error_reporting(0);
 $id_pessoa = $_SESSION['usuarioID'];
 $url_pessoa = $_SESSION['usuarioIDUrl'];
 
@@ -94,6 +95,23 @@ $url_pessoa = $_SESSION['usuarioIDUrl'];
                                     }
                         include_once("APP/view/home.php");
                       break; 
+
+
+                      case '/perfil/editar-perfil':
+
+                        $fk_pessoa = filter_input(INPUT_GET, 'fk_pessoa', FILTER_SANITIZE_NUMBER_INT);
+
+                        $select_fk_usuario = $conexao->conectar()->prepare("SELECT * FROM perfil WHERE fk_pessoa = :fk_pessoa");
+                        $select_fk_usuario->execute(array(
+                            ":fk_pessoa" => $fk_pessoa
+                        ));
+
+                        $select_fk_usuario_pegar = $select_fk_usuario->fetch(PDO::FETCH_ASSOC);
+
+
+                        include_once("APP/view/outros/editar.php");
+                        
+                      break;  
                       
                 }
                ?>

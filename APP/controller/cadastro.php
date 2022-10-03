@@ -30,12 +30,6 @@ class Cadastro extends Conexao
 
             $select_cadastro_assoc = $select_cadastro_->fetch(PDO::FETCH_ASSOC);
 
-            //Sessões
-            $_SESSION['nome'] = $nome;
-            $_SESSION['email'] = $email;
-            $_SESSION['senha'] = $senha;
-            //FIM
-
                 switch (true) {
                     case ($nome == "" && $email == "" && $confirma_email == "" && $senha == "" && $confirma_senha == ""):
                         $_SESSION['mensagem'] = "<div class = 'alert alert-danger' id='tempo'>Preencha todos os dados</div>";
@@ -167,11 +161,10 @@ class Cadastro extends Conexao
             $numeracao->execute(array(
                 ":id_pessoa" => $id_pessoa
             ));
-            while($pegar = $numeracao->fetch(PDO::FETCH_ASSOC)){
-                if($pegar['perfis']){
-                    $count_perfil ++;
-                }
-            }
+            
+            $pegar_numero_perfis_criado = $numeracao->fetch(PDO::FETCH_ASSOC);
+
+            $calculo = $pegar_numero_perfis_criado['perfis'] + $count_perfil;
 
             switch(true)
             {
@@ -217,7 +210,7 @@ class Cadastro extends Conexao
                         $update_pessoa_perfis_ = "UPDATE pessoa SET perfis = :perfis WHERE id = :id_pessoa";
                         $stm = $conexao->conectar()->prepare($update_pessoa_perfis_);
                         $stm->execute(array(
-                          ":perfis" => $count_perfil,
+                          ":perfis" => $calculo,
                           ":id_pessoa" => $id_pessoa
                         ));
 
@@ -276,7 +269,7 @@ class Cadastro extends Conexao
                         $update_pessoa_perfis = "UPDATE pessoa SET perfis = :perfis WHERE id = :id_pessoa";
                         $stm = $conexao->conectar()->prepare($update_pessoa_perfis);
                         $stm->execute(array(
-                          ":perfis" => $count_perfil,
+                          ":perfis" => $calculo,
                           ":id_pessoa" => $id_pessoa
                         ));
 
